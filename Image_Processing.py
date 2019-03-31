@@ -36,7 +36,7 @@ def main():
     sigma =np.uint8(math.sqrt(variance))
 
     #print(mean,variance)   
-    thresh= np.uint8(8*math.sqrt(variance))       # threshold of thresh to zero function
+    thresh= np.uint8(8*math.sqrt(variance))       
     initial_list = []
     x1,y1 =img.shape
     for i in range(x1):
