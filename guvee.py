@@ -3,7 +3,7 @@ from implibs import *
 #from mainprgm import *
 from PIL import Image, ImageTk
 #from mainprgm import *
-
+######CONTAINS FUNCTION FOR RESULT WINDOW
 def ResWin():
     m=Tk()
 
