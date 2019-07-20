@@ -1,8 +1,8 @@
 from Tkinter import *
 from implibs import *
-#from mainprgm import *
+from mainprgm import *
 from PIL import Image, ImageTk
-#from mainprgm import *
+
 #m=Tk()
 #def combfns(*fn1):
  ########CONTAINS CLASS REPRESENTATION
@@ -18,8 +18,8 @@ class ResWin(Frame):
         self.close_button = Button(self.master, text="Close", command=self.master.quit)
         self.another_button=Button(self.master,text="Check another image",command= lambda: insertimg(Tk())).grid(row=2,column=1)
         self.close_button.grid(row=4,column=1)
-        self.r=np.zeros((4,1),dtype=int)
-        #r=result
+        #self.r=np.zeros((4,1),dtype=int)
+        r=result
         i=0
         self.photo_image=[]
         for name in const_name:
