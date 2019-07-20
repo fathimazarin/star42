@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 #from mainprgm import *
 #m=Tk()
 #def combfns(*fn1):
-
+ ########CONTAINS CLASS REPRESENTATION
 
 class ResWin(Frame):
     def __init__(self,master):
