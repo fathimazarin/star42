@@ -1,8 +1,8 @@
 from Tkinter import *
 from implibs import *
-#from mainprgm import *
+from mainprgm import *
 from PIL import Image, ImageTk
-#from mainprgm import *
+
 ######CONTAINS FUNCTION FOR RESULT WINDOW
 def ResWin():
     m=Tk()
@@ -14,8 +14,8 @@ def ResWin():
     close_button = Button(m, text="Close", command=m.quit)
     another_button=Button(m,text="Check another image",command= lambda: insertimg(Tk())).grid(row=2,column=1)
     close_button.grid(row=4,column=1)
-    r=np.zeros((4,1),dtype=int)
-        #r=result
+    #r=np.zeros((4,1),dtype=int)
+    r=result
     i=0
     photo_image=[]
     for name in const_name:
