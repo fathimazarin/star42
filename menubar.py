@@ -10,15 +10,16 @@ import time
 import threading
 import webbrowser
 import implibs
-
+from multiprocessing import Process
+from selenium import webdriver
 root = Tk()
-root.geometry("1920x1080")
+root.geometry("700x700")
 frame1 = Frame(root)
 frame2 = Frame(root)
 #v = IntVar()
 new = 1
 url1= "https://github.com/fathimazarin/star42"
-url2="https://docs.google.com/document/d/1DEzzMaNtRvxnJgG-Jnkvsit0Y96FQ4fjLhor5J2GeB8/edit"
+url2="https://docs.google.com/document/d/101hhSNMt-TyTPod5bsKhQ6MmauDPQBo36w2biU0HhA8/edit"
 def openweb1():
 	webbrowser.open(url1,new = new)
 
@@ -80,14 +81,26 @@ def run1():
     #t = threading.Thread(target = statusbar,args = ())
     #t.start()
     #while t.is_alive():
+    webbrowser.open("file:///D:/Documents/user-interface/star43/process.html")
+    status.pack()
     import mainprgm
     global results
     results = mainprgm.main(np.array(img))
     #print(results)
         #break
     #root.destroy()
+    status.pack_forget()
+    os.system("taskkill /im chrome.exe /f")
     button4.pack()
     #ResWin()
+
+'''def run2():
+	p1 = Process(target = run1)
+	p1.start()
+	p2 = Process(target = statusbar)
+	p2.start()
+	p1.join()
+	p2.join()'''
 #################################
 v = IntVar()
 def openchecklist():
@@ -97,6 +110,9 @@ def openchecklist():
     button2.pack(anchor = S)
 
 def takeinput():
+    txt.pack_forget()
+    label99.pack_forget()
+    label999.pack_forget()
     x = v.get()
     button2.pack_forget()
     if x == 1:
@@ -135,11 +151,9 @@ def sendinput(event):
     label3.pack()
     #button3.pack()
 
-def statusbar():
-    status = Label(root,text = 'Running your query...',bd = 1,relief = SUNKEN, anchor = W)
-    status.pack(side = BOTTOM, fill = X)
-    time.sleep(2)
-    status.pack_forget()
+status = Label(frame1,text = 'Running your query...',bd = 1,relief = SUNKEN, anchor = W)
+#status.pack(side = BOTTOM, fill = X)
+#status.pack_forget()
 
 def run():
     #button3.pack_forget()
@@ -204,20 +218,23 @@ def homepage():
 	for widget in frame1.winfo_children():
 		widget.pack_forget()
 	frame1.pack()
+	txt.pack()
+	label99.pack()
+	label999.pack()
 	button1.pack()
 #################################I
 menu = Menu(root)
 root.config(menu = menu)
-imgcon = Menu(menu)
+#imgcon = Menu(menu)
 subpre = Menu(menu)
-menu.add_command(label='Home',command=hello)
+#menu.add_command(label='Home',command=hello)
 
-menu.add_cascade(label='Images',menu=imgcon)
-imgcon.add_command(label='Gemini',command =takeinput1)
+#menu.add_cascade(label='Images',menu=imgcon)
+#imgcon.add_command(label='Gemini',command =takeinput1)
 
-imgcon.add_command(label='Cassiopia',command = takeinput2)
-imgcon.add_command(label='Orion',command = takeinput3)
-imgcon.add_command(label='Ursa Major',command = takeinput4)
+#imgcon.add_command(label='Cassiopia',command = takeinput2)
+#imgcon.add_command(label='Orion',command = takeinput3)
+#imgcon.add_command(label='Ursa Major',command = takeinput4)
 
 menu.add_command(label='Run',command = run1)
 menu.add_command(label='Code',command = openweb1)
@@ -228,6 +245,16 @@ subpre.add_command(label='ppt',command=hello)
 subpre.add_command(label='vedio',command=hello)
 
 frame1.pack()
+txt = Label(frame1,text = '\n\n\n\nWhen you randomly look at the night sky, ever wondered which consellation you were looking at?\n That can be quite hard to answer for someone who is not a seasoned stargazer. \n This application aims to bridge that gap between you and a seasoned stargazer.\n \n \n\n\n',font='Helvetica 10 bold')
+txt.pack()
+img99 = Image.open('out.png')
+photo99 = ImageTk.PhotoImage(img99)
+label99 = Label(frame1,image = photo99)
+label99.image = photo99
+label99.pack()
+label999 = Label(frame1,text = '\n')
+label999.pack()
+
 button1 = Button(frame1,text = 'Select Input Type',command = openchecklist)
 button1.pack()
 button2 = Button(frame1,text = 'Next',command = takeinput)

@@ -12,8 +12,8 @@ def gaussian_similarity(x,y):
 
 
 def runqry(que): #takes in a query quad list and outputs result for each constellation
-    res=np.zeros((len(const_name),1),dtype=int)
-    
+    res=np.zeros((len(const_name),1),dtype=float)
+
     for i in range(len(const_name)):
         fileload='index'+const_name[i]+'.csv'
 
@@ -31,22 +31,22 @@ def runqry(que): #takes in a query quad list and outputs result for each constel
                 break
             else:
                 pass
-        
-        ind = ind.iloc[:,0:].values
-        
 
-        print('Loop running...')
+        ind = ind.iloc[:,0:].values
+
+
+        #print('Loop running...')
         similarity_matrix = np.zeros((que.shape[0],ind.shape[0]),dtype = float)
         for z in range(que.shape[0]):
             for c in range(ind.shape[0]):
                 similarity_matrix[z,c] = np.abs(gaussian_similarity(que[z],ind[c]))
-        
+        #print(similarity_matrix)
         stdev=np.zeros((similarity_matrix.shape[0],1),dtype=float)
         for j in range(similarity_matrix.shape[0]):
-            stdev[j]=np.std(similarity_matrix[j])
-        thresh=0.15
-        stdev=stdev[stdev>thresh]
-        res[i]=stdev.shape[0]
+            stdev[j]=np.amax(similarity_matrix[j],axis = 0)
+        #thresh=0.15
+        #print(stdev)#=stdev[stdev>thresh]
+        res[i]=(np.sum(stdev))/(stdev.shape[0])
+        print(res[i])
 
     return res
-
