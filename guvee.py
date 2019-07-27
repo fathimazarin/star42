@@ -1,8 +1,8 @@
-from Tkinter import *
+from tkinter import *
 from implibs import *
-from mainprgm import *
+#import mainprgm
 from PIL import Image, ImageTk
-
+#import menubar
 ######CONTAINS FUNCTION FOR RESULT WINDOW
 def ResWin():
     m=Tk()
@@ -15,15 +15,17 @@ def ResWin():
     another_button=Button(m,text="Check another image",command= lambda: insertimg(Tk())).grid(row=2,column=1)
     close_button.grid(row=4,column=1)
     #r=np.zeros((4,1),dtype=int)
-    r=result
+    r=0
     i=0
     photo_image=[]
     for name in const_name:
-        load=Image.open("Desktop/guistuff/"+name+".jpg")
+        load=Image.open("D:/Documents/user-interface/star43/"+ name +".jpg")
         load = load.resize((250, 250), Image.ANTIALIAS)
         render=ImageTk.PhotoImage(load)
         photo_image.append(render)
-        img=Label(m,image=render).grid(row=0,column=i)
+        img=Label(m,image=render)#.grid(row=0,column=i)
+        img.image = render
+        img.grid(row = 0,column = i)
         nm=''.join(map(str,r[i]))
         w=Label(m,text=const_name[i]+":"+nm,fg="red").grid(row=1,column=i)
         i=i+1
