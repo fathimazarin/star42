@@ -15,11 +15,13 @@ frame2 = Frame(root)
 new = 1
 url1= "https://github.com/fathimazarin/star42"
 url2="https://docs.google.com/document/d/101hhSNMt-TyTPod5bsKhQ6MmauDPQBo36w2biU0HhA8/edit"
+url3 = "https://drive.google.com/drive/folders/1Ym7QOqByR4Edvs69AI3JYUgaRpySabuU"
 def openweb1():
 	webbrowser.open(url1,new = new)
-
 def openweb2():
 	webbrowser.open(url2,new = new)
+def openweb3():
+    webbrowser.open(url3,new = new)
 
 def run():
     webbrowser.get(using = 'windows-default').open("file:///D:/Documents/user-interface/star43/process.html")
@@ -127,7 +129,7 @@ menu.add_command(label='Documentation',command = openweb2)
 
 menu.add_cascade(label='Presentation',menu =subpre)
 subpre.add_command(label='ppt')#,command=hello)
-subpre.add_command(label='video')#,command=hello)
+subpre.add_command(label='video',command = openweb3)
 
 frame1.pack()
 txt = Label(frame1,text = '\n\n\n\nWhen you randomly look at the night sky, ever wondered which consellation you were looking at?\n That can be quite hard to answer for someone who is not a seasoned stargazer. \n This application aims to bridge that gap between you and a seasoned stargazer.\n \n \n\n\n',font='Helvetica 10 bold')
