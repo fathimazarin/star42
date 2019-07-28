@@ -43,10 +43,9 @@ def runqry(que): #takes in a query quad list and outputs result for each constel
         #print(similarity_matrix)
         stdev=np.zeros((similarity_matrix.shape[0],1),dtype=float)
         for j in range(similarity_matrix.shape[0]):
-            stdev[j]=np.amax(similarity_matrix[j],axis = 0)
-        #thresh=0.15
-        #print(stdev)#=stdev[stdev>thresh]
+            stdev[j]=np.std(similarity_matrix[j])
+        thresh=0.17
+        stdev=stdev[stdev>thresh]
         res[i]=(np.sum(stdev))/(stdev.shape[0])
-        print(res[i])
 
     return res

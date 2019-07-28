@@ -10,10 +10,10 @@ import time
 import threading
 import webbrowser
 import implibs
-from multiprocessing import Process
-from selenium import webdriver
+
+
 root = Tk()
-root.geometry("700x700")
+root.geometry("1920x1080")
 frame1 = Frame(root)
 frame2 = Frame(root)
 #v = IntVar()
@@ -81,16 +81,14 @@ def run1():
     #t = threading.Thread(target = statusbar,args = ())
     #t.start()
     #while t.is_alive():
-    webbrowser.open("file:///D:/Documents/user-interface/star43/process.html")
-    status.pack()
+    webbrowser.get(using = 'windows-default').open("file:///D:/Documents/user-interface/star43/process.html")
     import mainprgm
     global results
     results = mainprgm.main(np.array(img))
     #print(results)
         #break
     #root.destroy()
-    status.pack_forget()
-    os.system("taskkill /im chrome.exe /f")
+    os.system("taskkill /im edge.exe /f")
     button4.pack()
     #ResWin()
 
@@ -151,9 +149,7 @@ def sendinput(event):
     label3.pack()
     #button3.pack()
 
-status = Label(frame1,text = 'Running your query...',bd = 1,relief = SUNKEN, anchor = W)
-#status.pack(side = BOTTOM, fill = X)
-#status.pack_forget()
+
 
 def run():
     #button3.pack_forget()
@@ -178,10 +174,10 @@ def ResWin():
 #self.init_window()
     #m.title("Find out the constellation!")
         #self.pack(fill=BOTH, expand=1)
-    return_button=Button(frame2,text="Return to Home page",command= homepage).grid(row=2,column=1)
+    return_button=Button(frame2,text="Return to Home page",command= homepage).grid(row=2,column=1,columnspan = 2)
     close_button = Button(frame2, text="Close", command=root.destroy)
     #another_button=Button(frame2,text="Check another image",command= lambda: insertimg(Tk())).grid(row=2,column=1)
-    close_button.grid(row=3,column=1)
+    close_button.grid(row=3,columnspan = 2,column = 1)
     #r=np.zeros((4,1),dtype=int)
     r=results
     i=0
